@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindmaster</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="data:,">
+
+  <!-- fontawesome  icons for badges -->
+  <script src="https://kit.fontawesome.com/f706edda1c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="legend">
+
+      </div>
+      <div class="row description">
+        <h1>
+          <!-- intestazione pagina -->
+          mindmaster
+        </h1>
+        <p class="game-description">
+          Indovina la serie di 4 numeri, tenendo conto anche della loro posizione.
+        </p>
+
+        <p class="subtle">
+          I numeri inseriti devono essere compresi tra 1 e 9 e devono essere nella posizione giusta per vincere!
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- input numeri -->
+    <section class="insert-numbers">
+      <div class="container">
+        <div class="row nums">
+          <form id="input-form" class="form">
+            <label class="num-input" for="num1">
+              <input id="num1" class="user-num" value="" type="number" min="1" max="9">
+            </label>
+
+            <label class="num-input" for="num2">
+              <input id="num2" name="num2" class="user-num" type="number" min="1" max="9">
+            </label>
+
+            <label class="num-input" for="num3">
+              <input id="num3" name="num3" class="user-num" type="number" min="1" max="9">
+            </label>
+
+            <label class="num-input" for="num4">
+              <input id="num4" name="num4" class="user-num" type="number" min="1" max="9">
+            </label>
+
+            <div class="btn-wrap">
+              <button class="btn">
+                Invio
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- lista con feedback in base ai numeri inseriti -->
+    <section class="answers">
+      <div class="container">
+        <div class="row">
+          <ul class="answers-list">
+
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- modale da mostrare in caso di vittoria -->
+    <!-- <div class="container">
+      <div class="row modal">
+        <div class="modal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">hai vinto !!!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>I numeri inseriti erano corretti e nella giusta posizione!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class=" btn-ok">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+  </main>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
