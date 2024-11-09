@@ -13,6 +13,7 @@ TODO:
   - a number with a cross iocon means that thew number is wrong;
   - a number with a circle icon means the number and the position are right;
 - implement input validation
-- modal showing up for win instead of js alert
+- modal showing up for win instead of js alert &#10003;
+  -manage overflow disabling scroll with modal opened;
 - add different difficulties (maybe adding different html pages for each difficulty?)
 - ...

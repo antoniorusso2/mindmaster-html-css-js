@@ -5,11 +5,12 @@
   --bg-color-page: #41436a;
   --accent-color: #f64668;
   --border-color: #984063;
-  --orange: #fe9677;
+  --text-color: #fe9677;
   --section-padding: 1.2rem;
   --margin-top: 4rem;
   --correct-color: #7ed4ad;
   --wrong-color: #cc2b52;
+  --modal-bg: rgba(65, 67, 106, 10%);
 }
 
 * {
@@ -40,14 +41,18 @@ h1 {
 }
 
 body {
+  /* overflow: hidden; */
   background-color: var(--bg-color-page);
-  color: var(--orange);
+  color: var(--text-color);
 }
 
-/* ul {
-  list-style: none;
-  text-decoration: none;
-} */
+/* utilities */
+.hidden {
+  display: none;
+}
+.flex {
+  display: flex;
+}
 
 /*
  container centering
@@ -81,6 +86,69 @@ sections margin and padding
   padding: 2rem 0;
 }
 
+/* modale vittoria o sconfitta */
+.modal-container {
+  /* display: flex; */
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 500px;
+  position: fixed;
+  /* overflow: hidden; */
+  top: 3rem;
+  left: 50%;
+  transform: translate(-50%, -3rem);
+  z-index: 999;
+
+  text-align: center;
+  font-size: 1rem;
+}
+.modal {
+  background: var(--modal-bg);
+  border-radius: 1rem;
+  /* css glow generator */
+  -webkit-box-shadow: 0px 0px 30px 0px var(--accent-color);
+  -moz-box-shadow: 0px 0px 30px 0px var(--accent-color);
+  box-shadow: 0px 0px 30px 1px var(--accent-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--accent-color);
+  /* backdrop-filter: saturate(100%); */
+
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  padding: var(--section-padding);
+
+  /* border-radius: 999px; */
+}
+
+.modal-header h2 {
+  font-size: 3.5em;
+  font-weight: 600;
+  /* text-decoration: underline; */
+}
+
+.modal-header h2::after {
+  display: block;
+  content: "";
+  height: 1px;
+  background-color: var(--text-color);
+}
+
+.modal-body {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  /* width: 40%; */
+}
+.modal-body p {
+  text-align: center;
+  font-size: 1.5em;
+}
+
 /* header */
 .row.description {
   flex-wrap: wrap;
@@ -98,7 +166,7 @@ sections margin and padding
   text-align: center;
   cursor: pointer;
   background: var(--border-color);
-  color: var(--orange);
+  color: var(--text-color);
   border: 1px solid;
   border-radius: 999px;
   padding: 0 1.2rem;
@@ -127,7 +195,7 @@ sections margin and padding
 
 /* stile text input */
 .num-input > input {
-  width: 100%;
+  width: 120px;
   text-align: center;
   border-radius: 999px;
   border: 1px solid var(--accent-color);
@@ -159,15 +227,6 @@ risposte utente
   font-size: 1.2rem;
 }
 
-/* modal vittoria */
-/* 
-.row.modal {
-  justify-content: center;
-}
-.modal-title {
-  text-transform: uppercase;
-} */
-
 /****************************
 MEDIAQUERY
 ****************************/
@@ -180,3 +239,9 @@ MEDIAQUERY
     width: calc(100% / 2);
   }
 }
+
+/* @keyframes modal {
+  from {
+    position
+  }
+} */
