@@ -42,7 +42,6 @@ function winOrLose(bool) {
     modal.appendChild(loseText);
   }
 }
-
 /**
  *
  * @param {*} el
@@ -54,10 +53,17 @@ function removeAddClass(el, remove, add) {
   el.classList.add(add);
 }
 
-//DOM
+//tutorial
+const tutorialContainer = document.querySelector('.tutorial-container');
+
+console.log(tutorialContainer);
+// tutorial btn
+const tutorialBtn = document.getElementById('start-btn');
+
 //input html per l'inserimento dei numeri
 const inputNums = document.querySelectorAll('.user-num'); //nodeList con i numeri inseriti
 const form = document.getElementById('input-form'); //form evento submit
+const nums = document.querySelectorAll('.num-input');
 const num1 = document.getElementById('num1');
 const num2 = document.getElementById('num2');
 const num3 = document.getElementById('num3');
@@ -71,11 +77,17 @@ const modalTitle = document.querySelector('.modal-header');
 const modalText = document.querySelector('.modal-body');
 const playAgainBtn = document.querySelector('.btn.modal-btn');
 
-//button
-const btn = document.querySelector('.btn');
+//button submit
+const btn = document.querySelector('.btn.submit');
 console.log(btn);
 
+//apertura overlay con tutorial al caricamento della pagina
+
 //===================================================================//
+
+tutorialBtn.addEventListener('click', () => {
+  tutorialContainer.classList.add('hidden');
+});
 
 //array numeri da indovinare
 const numsToGuess = [];
@@ -146,4 +158,14 @@ form.addEventListener('submit', (event) => {
   });
 });
 
-// console.log(inputNums);
+nums.forEach((num) => {
+  num.addEventListener('input', () => {
+    if (num.value.trim() === '') {
+      num.classList.remove('valid');
+      num.classList.add('invalid');
+    } else {
+      num.classList.remove('invalid');
+      num.classList.add('valid');
+    }
+  });
+});
