@@ -15,7 +15,7 @@
     <header>
       <div class="container">
         <!-- tutorial overlay -->
-        <div class="tutorial-container">
+        <div class="tutorial-container hidden">
           <div class="text">
             <h2>Indovina i numeri posizionati correttamente</h2>
 
@@ -55,7 +55,9 @@
           </h1>
           <p class="game-description">Indovina la serie di 4 numeri, tenendo conto anche della loro posizione.</p>
 
-          <p class="subtle">I numeri inseriti devono essere compresi tra 1 e 9 e devono essere nella posizione giusta per vincere!</p>
+          <p class="subtle">
+            I numeri inseriti devono essere compresi tra 1 e 9 e devono essere nella posizione giusta per vincere!
+          </p>
         </div>
       </div>
     </header>
@@ -64,29 +66,29 @@
       <!-- input numeri -->
       <section class="insert-numbers">
         <div class="container">
-          <div class="row nums">
-            <form id="input-form" class="form">
-              <label class="num-input" for="num1">
-                <input id="num1" class="user-num" value="" type="number" min="1" max="9" />
-              </label>
+          <form id="input-form" class="form">
+            <div class="form-field">
+              <label class="num-input" for="num1"> </label>
+              <input id="num1" class="user-num" value="" type="number" min="1" max="9" />
+            </div>
+            <div class="form-field">
+              <label class="num-input" for="num2"> </label>
+              <input id="num2" name="num2" class="user-num" type="number" min="1" max="9" />
+            </div>
+            <div class="form-field">
+              <label class="num-input" for="num3"> </label>
+              <input id="num3" name="num3" class="user-num" type="number" min="1" max="9" />
+            </div>
 
-              <label class="num-input" for="num2">
-                <input id="num2" name="num2" class="user-num" type="number" min="1" max="9" />
-              </label>
+            <div class="form-field">
+              <label class="num-input" for="num4"> </label>
+              <input id="num4" name="num4" class="user-num" type="number" min="1" max="9" />
+            </div>
 
-              <label class="num-input" for="num3">
-                <input id="num3" name="num3" class="user-num" type="number" min="1" max="9" />
-              </label>
-
-              <label class="num-input" for="num4">
-                <input id="num4" name="num4" class="user-num" type="number" min="1" max="9" />
-              </label>
-
-              <div class="btn-wrap">
-                <button class="btn submit">Invio</button>
-              </div>
-            </form>
-          </div>
+            <div class="btn-wrap">
+              <button class="btn submit">Invio</button>
+            </div>
+          </form>
         </div>
       </section>
 
@@ -114,6 +116,6 @@
         </div>
       </div>
     </main>
-    <script src="./js/script.js"></script>
+    <script type="module" src="./js/script.js"></script>
   </body>
 </html>

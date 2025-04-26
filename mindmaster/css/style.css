@@ -1,5 +1,5 @@
 /* reset rules */
-@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Quicksand:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Quicksand:wght@300..700&display=swap");
 
 :root {
   --bg-color-page: #41436a;
@@ -21,7 +21,7 @@
 
 *,
 html {
-  font-family: 'Jura', sans-serif;
+  font-family: "Jura", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -180,7 +180,7 @@ sections margin and padding
 
 .modal-header h2::after {
   display: block;
-  content: '';
+  content: "";
   height: 1px;
   background-color: var(--text-color);
 }
@@ -242,20 +242,35 @@ sections margin and padding
   row-gap: var(--section-padding);
 }
 
-.form > label {
-  text-align: center;
-  width: calc(100% / 4);
-  padding: var(--section-padding);
+.form-field {
+  width: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  row-gap: var(--section-padding);
 }
-
 /* stile text input */
-.num-input > input {
+input {
   width: 120px;
   text-align: center;
   border-radius: 0.5rem;
   border: 1px solid var(--accent-color);
   padding: 0 0.4rem;
   line-height: 2em;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]:focus {
+  /* outline: none; */
+  outline-color: var(--accent-color);
+  outline-offset: 1px;
+  outline-width: 1px;
+  outline-offset: 3px;
 }
 
 /* 

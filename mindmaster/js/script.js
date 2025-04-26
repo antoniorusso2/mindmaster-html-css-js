@@ -1,12 +1,30 @@
-console.log('mindmaster');
+import Game from "./classes/Game.js";
+import { inputs, tutorialContainer, inputForm } from "./DOM/DOMElements.js";
+
+const game = new Game();
+
+inputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    if (input.value < 1 || input.value > 9) {
+      input.value = "";
+    }
+  });
+});
+
+inputForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  game.checkWin(inputs);
+
+  console.log(game.getAttempts(), game.checkWin(inputs));
+});
 
 //gioco nel quale bisogna indovinare 4 numeri generati casualmente
 //array con quattro numeri casuali
-function getRandomIntInclusive(min, max) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-}
+// function getRandomIntInclusive(min, max) {
+//   const minCeiled = Math.ceil(min);
+//   const maxFloored = Math.floor(max);
+//   return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+// }
 //generare elemento DOM
 
 /**
@@ -16,156 +34,157 @@ function getRandomIntInclusive(min, max) {
  * @param {string} content
  * @returns
  */
-function createDOMElement(tag, classList = [], content = '') {
-  const element = document.createElement(tag);
+// function createDOMElement(tag, classList = [], content = "") {
+//   const element = document.createElement(tag);
 
-  if (classList.length > 0) {
-    element.classList.add(...classList);
-  }
-  element.innerHTML = content;
+//   if (classList.length > 0) {
+//     element.classList.add(...classList);
+//   }
+//   element.innerHTML = content;
 
-  return element;
-}
+//   return element;
+// }
 
-function winOrLose(bool) {
-  if (bool) {
-    const youWin = createDOMElement('h2', [], 'Hai Vinto!');
-    const winText = createDOMElement('p', [], 'I numeri inseriti sono giusti e nella posizione corretta');
+// function winOrLose(bool) {
+//   if (bool) {
+//     const youWin = createDOMElement("h2", [], "Hai Vinto!");
+//     const winText = createDOMElement("p", [], "I numeri inseriti sono giusti e nella posizione corretta");
 
-    modalTitle.appendChild(youWin);
-    modalText.appendChild(winText);
-  } else {
-    const youLose = createDOMElement('h2', [], 'Hai Perso!');
-    const loseText = createDOMElement('p', [], 'Hai finito il numero di tentativi validi, prova di nuovo!');
+//     modalTitle.appendChild(youWin);
+//     modalText.appendChild(winText);
+//   } else {
+//     const youLose = createDOMElement("h2", [], "Hai Perso!");
+//     const loseText = createDOMElement("p", [], "Hai finito il numero di tentativi validi, prova di nuovo!");
 
-    modal.appendChild(youLose);
-    modal.appendChild(loseText);
-  }
-}
-/**
- *
- * @param {*} el
- * @param {string} remove
- * @param {string} add
- */
-function removeAddClass(el, remove, add) {
-  el.classList.remove(remove);
-  el.classList.add(add);
-}
+//     modal.appendChild(youLose);
+//     modal.appendChild(loseText);
+//   }
+// }
+// /**
+//  *
+//  * @param {*} el
+//  * @param {string} remove
+//  * @param {string} add
+//  */
+// function removeAddClass(el, remove, add) {
+//   el.classList.remove(remove);
+//   el.classList.add(add);
+// }
 
-//tutorial
-const tutorialContainer = document.querySelector('.tutorial-container');
+// //tutorial
+// const tutorialContainer = document.querySelector(".tutorial-container");
 
-console.log(tutorialContainer);
-// tutorial btn
-const tutorialBtn = document.getElementById('start-btn');
+// console.log(tutorialContainer);
+// // tutorial btn
+// const tutorialBtn = document.getElementById("start-btn");
 
-//input html per l'inserimento dei numeri
-const inputNums = document.querySelectorAll('.user-num'); //nodeList con i numeri inseriti
-const form = document.getElementById('input-form'); //form evento submit
-const nums = document.querySelectorAll('.num-input');
-const num1 = document.getElementById('num1');
-const num2 = document.getElementById('num2');
-const num3 = document.getElementById('num3');
-const num4 = document.getElementById('num4');
-// modale
-const modalContainer = document.querySelector('.modal-container');
-console.log(modalContainer);
-const modal = document.querySelector('.modal');
-// console.log(modal);
-const modalTitle = document.querySelector('.modal-header');
-const modalText = document.querySelector('.modal-body');
-const playAgainBtn = document.querySelector('.btn.modal-btn');
+// //input html per l'inserimento dei numeri
+// const inputNums = document.querySelectorAll(".user-num"); //nodeList con i numeri inseriti
+// const form = document.getElementById("input-form"); //form evento submit
+// const nums = document.querySelectorAll(".num-input");
+// const num1 = document.getElementById("num1");
+// const num2 = document.getElementById("num2");
+// const num3 = document.getElementById("num3");
+// const num4 = document.getElementById("num4");
+// // modale
+// const modalContainer = document.querySelector(".modal-container");
+// console.log(modalContainer);
+// const modal = document.querySelector(".modal");
+// // console.log(modal);
+// const modalTitle = document.querySelector(".modal-header");
+// const modalText = document.querySelector(".modal-body");
+// const playAgainBtn = document.querySelector(".btn.modal-btn");
 
-//button submit
-const btn = document.querySelector('.btn.submit');
-console.log(btn);
+// //button submit
+// const btn = document.querySelector(".btn.submit");
+// console.log(btn);
 
-//apertura overlay con tutorial al caricamento della pagina
+// //apertura overlay con tutorial al caricamento della pagina
 
-//===================================================================//
+// //===================================================================//
 
-tutorialBtn.addEventListener('click', () => {
-  tutorialContainer.classList.add('hidden');
-});
+// tutorialBtn.addEventListener("click", () => {
+//   tutorialContainer.classList.add("hidden");
+// });
 
-//array numeri da indovinare
-const numsToGuess = [];
-console.log(numsToGuess);
+// //array numeri da indovinare
+// const numsToGuess = [];
+// console.log(numsToGuess);
 
-while (numsToGuess.length < 4) {
-  let num = getRandomIntInclusive(1, 9);
+// while (numsToGuess.length < 4) {
+//   let num = getRandomIntInclusive(1, 9);
 
-  if (!numsToGuess.includes(num)) {
-    numsToGuess.push(num);
-  }
-}
+//   if (!numsToGuess.includes(num)) {
+//     numsToGuess.push(num);
+//   }
+// }
 
-//pulizia campi alla ricarica della pagina
-num1.value = '';
-num2.value = '';
-num3.value = '';
-num4.value = '';
+// //pulizia campi alla ricarica della pagina
+// num1.value = "";
+// num2.value = "";
+// num3.value = "";
+// num4.value = "";
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
 
-  const userGuesses = [];
-  const rightGuesses = [];
-  //lista risposte date dall'utente
-  const answerList = document.querySelector('.answers-list');
-  // console.log(answerList.length);
-  //contenitore badges
-  const badgesContainer = createDOMElement('div', ['badges-container']);
+//   const userGuesses = [];
+//   const rightGuesses = [];
 
-  for (let i = 0; i < numsToGuess.length; i++) {
-    //trasformazione in numero intero il valore inserito dall'utente;
-    let userNum = parseInt(inputNums[i].value);
-    userGuesses.push(userNum);
+//   //lista risposte date dall'utente
+//   const answerList = document.querySelector(".answers-list");
+//   // console.log(answerList.length);
+//   //contenitore badges
+//   const badgesContainer = createDOMElement("div", ["badges-container"]);
 
-    //controllo sull' index separato dal ciclo per aggiungere elemento ad array
+//   for (let i = 0; i < numsToGuess.length; i++) {
+//     //trasformazione in numero intero il valore inserito dall'utente;
+//     let userNum = parseInt(inputNums[i].value);
+//     userGuesses.push(userNum);
 
-    //* controllo uguaglianza e posizione numero
-    if (numsToGuess[i] === userNum) {
-      const correctBadge = createDOMElement('div', ['correct-badge', 'fa-regular', 'fa-circle'], '');
-      badgesContainer.appendChild(correctBadge);
+//     //controllo sull' index separato dal ciclo per aggiungere elemento ad array
 
-      rightGuesses.push(userNum);
-    } else if (numsToGuess.includes(userNum)) {
-      const wrongPosition = createDOMElement('div', ['wrong-position', 'fa-regular', 'fa-square'], '');
-      badgesContainer.appendChild(wrongPosition);
-    } else {
-      const wrong = createDOMElement('div', ['wrong', 'fa-solid', 'fa-xmark'], '');
-      badgesContainer.appendChild(wrong);
-    }
+//     //* controllo uguaglianza e posizione numero
+//     if (numsToGuess[i] === userNum) {
+//       const correctBadge = createDOMElement("div", ["correct-badge", "fa-regular", "fa-circle"], "");
+//       badgesContainer.appendChild(correctBadge);
 
-    // inputNums[i].value = ''; //?pulizia campo
-  }
+//       rightGuesses.push(userNum);
+//     } else if (numsToGuess.includes(userNum)) {
+//       const wrongPosition = createDOMElement("div", ["wrong-position", "fa-regular", "fa-square"], "");
+//       badgesContainer.appendChild(wrongPosition);
+//     } else {
+//       const wrong = createDOMElement("div", ["wrong", "fa-solid", "fa-xmark"], "");
+//       badgesContainer.appendChild(wrong);
+//     }
 
-  const answer = createDOMElement('li', ['answer'], userGuesses);
-  answerList.appendChild(answer);
+//     // inputNums[i].value = ''; //?pulizia campo
+//   }
 
-  // aggiunta del container dei badge
-  answer.appendChild(badgesContainer);
+//   const answer = createDOMElement("li", ["answer"], userGuesses);
+//   answerList.appendChild(answer);
 
-  if (rightGuesses.length === numsToGuess.length) {
-    removeAddClass(modalContainer, 'hidden', 'flex');
-    winOrLose(true);
-    modalContainer.appendChild(modal);
-  }
-  playAgainBtn.addEventListener('click', () => {
-    location.reload();
-  });
-});
+//   // aggiunta del container dei badge
+//   answer.appendChild(badgesContainer);
 
-nums.forEach((num) => {
-  num.addEventListener('input', () => {
-    if (num.value.trim() === '') {
-      num.classList.remove('valid');
-      num.classList.add('invalid');
-    } else {
-      num.classList.remove('invalid');
-      num.classList.add('valid');
-    }
-  });
-});
+//   if (rightGuesses.length === numsToGuess.length) {
+//     removeAddClass(modalContainer, "hidden", "flex");
+//     winOrLose(true);
+//     modalContainer.appendChild(modal);
+//   }
+//   playAgainBtn.addEventListener("click", () => {
+//     location.reload();
+//   });
+// });
+
+// nums.forEach((num) => {
+//   num.addEventListener("input", () => {
+//     if (num.value.trim() === "") {
+//       num.classList.remove("valid");
+//       num.classList.add("invalid");
+//     } else {
+//       num.classList.remove("invalid");
+//       num.classList.add("valid");
+//     }
+//   });
+// });
